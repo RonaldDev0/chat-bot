@@ -10,8 +10,8 @@ export const metadata = { title: 'Chat Gpt | By @ronald_dev' }
 
 export default function RootLayout ({ children }: { children: ReactNode }) {
   return (
-    <html lang='en-us'>
-      <body className='text-xl flex h-screen'>
+    <html lang='en'>
+      <body className='text-xl flex h-screen text-gray-300'>
         <SideBarr />
         {children}
       </body>
