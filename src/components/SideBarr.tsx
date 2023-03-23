@@ -1,10 +1,11 @@
 // Components
-import { ToggleTheme } from '@/components'
+import { ToggleTheme, ClearChat } from '@/components'
 
 export default function SideBarr () {
   return (
-    <div className='w-72 bg-gray-900'>
+    <div className='w-72 dark:bg-gray-900 bg-gray-400'>
       <ToggleTheme />
+      <ClearChat />
     </div>
   )
 }
