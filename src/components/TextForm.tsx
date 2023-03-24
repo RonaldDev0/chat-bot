@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 
-export default function TextForm () {
+export default function TextForm ({ setInput }: { setInput: Function }) {
   const [text, setText] = useState<string>('')
   const [loading, setLoading] = useState<string>('Send')
 
@@ -12,9 +12,9 @@ export default function TextForm () {
   const handleSubmit = (e: any) => {
     e.preventDefault()
     setLoading('Loading...')
-    alert(text)
+    setInput(text)
     setText('')
-    setInterval(() => setLoading('Send'), 5000)
+    setLoading('Send')
   }
 
   return (

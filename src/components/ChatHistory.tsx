@@ -1,13 +1,15 @@
-// Fake Database
-import { messages, message } from '@/db'
-
 // Components
 import { Message } from '@/components'
 
-export default function ChatHistory () {
+// Interfaces
+interface props {
+  messages: object[]
+}
+
+export default function ChatHistory ({ messages }: props) {
   return (
     <>
-      {messages?.map(({ id, from, message }: message) => <Message key={id} from={from} message={message} />)}
+      {messages.map(({ from, message }: any) => <Message key={message} from={from} message={message} />)}
     </>
   )
 }
