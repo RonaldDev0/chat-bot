@@ -11,9 +11,14 @@ export default function Message ({ from, message }: props) {
   const icon = from === 'user' ? './user.svg' : './chatgpt-icon.svg'
 
   return (
-    <div className={`${bg} flex items-start p-2 gap-2`}>
-      <Image width='45' height='45' src={icon} alt='icon' />
-      <h1>{message}</h1>
-    </div>
+    <>
+      {
+        message &&
+          <div className={`${bg} flex items-start p-2 gap-2`}>
+            <Image width='45' height='45' src={icon} alt='icon' />
+            <h1>{message}</h1>
+          </div>
+      }
+    </>
   )
 }
