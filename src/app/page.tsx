@@ -1,3 +1,6 @@
+'use client'
+import { useState, useEffect } from 'react'
+
 // Components
 import { ChatHistory, TextForm } from '@/components'
 
@@ -5,14 +8,21 @@ import { ChatHistory, TextForm } from '@/components'
 import { openai } from '@/lib'
 
 export default function Home () {
-  openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
-    messages: [{ role: 'user', content: 'hi how are you' }]
-  }).then(res => console.log(res.data.choices[0].message?.content))
+  const [response, setResponse] = useState<any>('')
+
+  useEffect(() => {
+    async function seter () {
+      await openai.createChatCompletion({
+        model: 'gpt-3.5-turbo',
+        messages: [{ role: 'user', content: 'hi how are you' }]
+      }).then(({ data: { choices } }) => setResponse(choices[0].message?.content))
+    }seter()
+  }, [])
 
   return (
     <div className='w-full h-screen flex justify-center overflow-auto'>
       <div className='w-5/12 container flex flex-col gap-5 h-screen'>
+        {response}
         <ChatHistory />
         <TextForm />
       </div>
