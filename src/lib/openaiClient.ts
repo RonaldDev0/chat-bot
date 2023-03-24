@@ -1,9 +1,9 @@
 import { Configuration, OpenAIApi } from 'openai'
 
 const configuration = new Configuration({
-  organization: 'personal',
+  organization: 'org-e2S5x9SvkC26ycHyVeYccoq4',
   apiKey: process.env.OPENAI_API_KEY
 })
 
-const openai = new OpenAIApi(configuration)
-export const response = await openai.listEngines()
+export const openai = new OpenAIApi(configuration)
+export const response = async () => await openai.listEngines().then(res => res)
