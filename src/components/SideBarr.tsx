@@ -1,11 +1,11 @@
 // Components
 import { ToggleTheme, ClearChat } from '@/components'
 
-export default function SideBarr () {
+export default function SideBarr ({ setMessages }: { setMessages: Function }) {
   return (
     <div className='w-72 dark:bg-gray-900 bg-gray-400'>
       <ToggleTheme />
-      <ClearChat />
+      <ClearChat setMessages={setMessages} />
     </div>
   )
 }
