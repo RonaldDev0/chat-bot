@@ -11,13 +11,17 @@ export default function Home () {
   const [response, setResponse] = useState<any>('')
   const [input, setInput] = useState<string | null>(null)
   const [messages, setMessages] = useState<object[]>([])
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     async function seter () {
       input && await openai.createChatCompletion({
         model: 'gpt-3.5-turbo',
         messages: [{ role: 'user', content: input }]
-      }).then(({ data: { choices } }) => setResponse(choices[0].message?.content))
+      }).then(({ data: { choices } }) => {
+        setResponse(choices[0].message?.content)
+        setLoading(false)
+      })
     }seter()
   }, [input])
 
@@ -35,7 +39,7 @@ export default function Home () {
       <div className='w-full h-screen flex justify-center overflow-auto'>
         <div className='w-5/12 container flex flex-col gap-5 h-screen'>
           <ChatHistory messages={messages} />
-          <TextForm setInput={setInput} />
+          <TextForm setInput={setInput} loading={loading} setLoading={setLoading} />
         </div>
       </div>
     </>
