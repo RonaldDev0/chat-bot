@@ -37,7 +37,7 @@ export default function Home () {
     <>
       <SideBarr setMessages={setMessages} />
       <div className='w-full h-screen flex justify-center overflow-auto'>
-        <div className='w-5/12 container'>
+        <div className='w-5/12 max-[600px]:w-full max-[600px]:m- container'>
           <ChatHistory messages={messages} />
           <TextForm setInput={setInput} loading={loading} setLoading={setLoading} />
         </div>
